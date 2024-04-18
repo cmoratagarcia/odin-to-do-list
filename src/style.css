@@ -8,12 +8,12 @@
 body {
     box-sizing: border-box;
     margin: 0;
-}
+    display: grid;
+    }
 
 header {
     background-color: var(--blue-gray);
     color: white;
-    height: 50px;
     padding: 10px;
     font-size: 40px;
     text-align: center;
@@ -21,10 +21,15 @@ header {
 .content {
     display: grid;
     grid-template-columns: 1fr 3fr;
-}
+    height: 100vh;
+ }
 
 .sidebar {
     background-color: var(--brown);
+    padding: 20px;
+}
+.category-container, .date-container {
+margin-top: 50px;
 }
 
 ul {

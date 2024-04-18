@@ -17,21 +17,75 @@
     <header>My Tasks</header>
     <div class="content">
       <div class="sidebar">
-        <div class="category-container">Category</div>
-        <ul class="category-options">
-          <li>General</li>
-        </ul>
-        <div class="date-container">Due</div>
-        <ul class="due-options">
-          <li>Today</li>
-          <li>Soon</li>
-          <li>Later</li>
-        </ul>
+        <div class="category-container">
+          <h3>Category</h3>
+          <ul class="category-options">
+            <li>General</li>
+          </ul>
+          <button class="new-category-btn">Add Category</button>
+        </div>
+        <div class="date-container">
+          <h3>Due</h3>
+          <ul class="due-options">
+            <li>Today</li>
+            <li>Soon</li>
+            <li>Later</li>
+          </ul>
+        </div>
       </div>
       <main>
         <h1 class="category-title">Title</h1>
+        <button class="new-task-btn">+</button>
         <ul class="task-container"></ul>
       </main>
     </div>
+    <dialog>
+      <form method="dialog" class="form">
+        <div class="close-dialog">X</div>
+        <h3>New Task</h3>
+
+        <ul>
+          <li class="form-input">
+            <input
+              id="title"
+              class="text-input"
+              name="title"
+              type="text"
+              placeholder="Title"
+              required
+              autofocus
+            />
+          </li>
+          <li class="form-input">
+            <textarea
+              id="description"
+              class="text-input"
+              name="description"
+              type="text-area"
+              rows="5"
+              cols="20"
+              placeholder="Description"
+            ></textarea>
+          </li>
+          </li>
+          <li class="form-input">
+            <label for="due-date">Due:</label>
+            <input
+              id="due-date"
+              class="text-input"
+              name="due"
+              type="date"
+             />
+          </li>
+          <li>
+            <label for="category">Category:</label>
+            <select id="categories" name="categories">
+              <option value="general">General</option>
+            </select>
+          </li>
+        </ul>
+        <button class="submit">Submit</button>
+      </form>
+    </dialog>
   </body>
 </html>
