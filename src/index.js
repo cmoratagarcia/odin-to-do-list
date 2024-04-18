@@ -1,6 +1,8 @@
 import "./style.css";
 
+const newTask = document.querySelector(".new-task-btn");
 const dialog = document.querySelector("dialog");
+const closeDialog = document.querySelector(".close-dialog");
 
 function component() {
   const element = document.createElement("div");
@@ -8,4 +10,9 @@ function component() {
 }
 
 document.body.appendChild(component());
-dialog.showModal();
+newTask.addEventListener("click", () => {
+  dialog.showModal();
+});
+closeDialog.addEventListener("click", () => {
+  dialog.close();
+});
