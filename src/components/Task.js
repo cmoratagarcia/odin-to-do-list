@@ -7,6 +7,7 @@ export default function Task() {
 
   const taskCard = document.createElement("li");
   taskCard.classList.add("task-card");
+  taskCard.classList.add(priority.value);
 
   const taskTitle = document.createElement("h3");
   taskTitle.innerText = title.value;
@@ -17,13 +18,9 @@ export default function Task() {
   const taskDate = document.createElement("p");
   taskDate.innerText = dueDate.value;
 
-  const taskCategory = document.createElement("p");
-  taskCategory.innerText = category.value;
-
   taskCard.appendChild(taskTitle);
   taskCard.appendChild(taskDescription);
   taskCard.appendChild(taskDate);
-  taskCard.appendChild(taskCategory);
 
   return taskCard;
 }

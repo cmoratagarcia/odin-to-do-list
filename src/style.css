@@ -35,3 +35,15 @@ margin-top: 50px;
 ul {
     list-style: none;
 }
+
+.high {
+    background-color: red;
+}
+
+.medium {
+    background-color: yellow;
+}
+
+.low {
+    background-color: green;
+}
