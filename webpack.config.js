@@ -6,8 +6,8 @@ module.exports = {
   watch: true,
   plugins: [
     new HtmlWebpackPlugin({
-      title: "To-Dos",
-    
+      title: "My Tasks",
+      template: "./src/index.html",
     }),
   ],
   output: {
