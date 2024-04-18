@@ -1,0 +1,32 @@
+:root {
+    --off-white: #f0ece2; 
+    --beige: #dfd3c3; 
+    --brown: #c7b198; 
+    --blue-gray: #596e79; 
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+header {
+    background-color: var(--blue-gray);
+    color: white;
+    height: 50px;
+    padding: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+.content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.sidebar {
+    background-color: var(--brown);
+}
+
+ul {
+    list-style: none;
+}

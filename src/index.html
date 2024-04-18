@@ -3,13 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>My Tasks</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>My Tasks</header>
-    <div class="sidebar"></div>
-    <main></main>
+    <div class="content">
+      <div class="sidebar">
+        <div class="category-container">Category</div>
+        <ul class="category-options">
+          <li>General</li>
+        </ul>
+        <div class="date-container">Due</div>
+        <ul class="due-options">
+          <li>Today</li>
+          <li>Soon</li>
+          <li>Later</li>
+        </ul>
+      </div>
+      <main>
+        <h1 class="category-title">Title</h1>
+        <ul class="task-container"></ul>
+      </main>
+    </div>
   </body>
 </html>
