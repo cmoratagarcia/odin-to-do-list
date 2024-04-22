@@ -1,6 +1,6 @@
 import { Task, addTask } from "./taskLibrary.js";
 
-export default function renderTask() {
+function renderTask() {
   const title = document.querySelector("#title").value;
   const description = document.querySelector("#description").value;
   const dueDate = document.querySelector("#due-date").value;
@@ -10,7 +10,7 @@ export default function renderTask() {
   const newTask = new Task(title, description, dueDate, category, priority);
   addTask(newTask);
   const taskCard = createTaskCard(newTask);
-  return { taskCard, newTask };
+  return taskCard;
 }
 
 function createTaskCard(taskData) {
@@ -33,3 +33,5 @@ function createTaskCard(taskData) {
 
   return taskCard;
 }
+
+export { renderTask, createTaskCard };
