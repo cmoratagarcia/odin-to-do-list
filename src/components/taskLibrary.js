@@ -10,20 +10,23 @@ function Task(title, description, due, category, priority) {
 
 function addTask(task) {
   taskArray.push(task);
-  saveToLocalStorage();
+  saveToStorage();
 }
 
 function deleteTask(index) {
   taskArray.splice(index, 1);
-  saveToLocalStorage();
+  saveToStorage();
 }
 
-function saveToLocalStorage() {
+function saveToStorage() {
   localStorage.setItem("taskList", JSON.stringify(taskArray));
 }
 
-function retrieveFromLocalStorage() {
-  JSON.parse(localStorage.getItem("taskList"));
+function retrieveFromStorage() {
+  const tasksJSON = localStorage.getItem("taskList");
+  if (tasksJSON) {
+    taskArray = JSON.parse(tasksJSON);
+  }
 }
 
-export { Task, addTask, deleteTask, retrieveFromLocalStorage, taskArray };
+export { Task, addTask, deleteTask, retrieveFromStorage, taskArray };
