@@ -21,13 +21,19 @@ function createTaskCard(taskData) {
   const taskTitle = document.createElement("h3");
   taskTitle.innerText = taskData.title;
 
+  const deleteIcon = document.createElement("div");
+  deleteIcon.classList.add("delete-icon");
+  deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+
   const taskDescription = document.createElement("p");
   taskDescription.innerText = taskData.description;
 
   const taskDate = document.createElement("p");
-  taskDate.innerText = taskData.due;
+  taskDate.innerText = `Due: ${taskData.due}`;
+  taskDate.setAttribute("style", "color: gray; font-style:italic;");
 
   taskCard.appendChild(taskTitle);
+  taskCard.appendChild(deleteIcon);
   taskCard.appendChild(taskDescription);
   taskCard.appendChild(taskDate);
 
