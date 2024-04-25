@@ -49,7 +49,8 @@ function refreshTaskList(array) {
   const deleteBtns = document.querySelectorAll(".delete-button");
   deleteBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
-      console.log(event.target.parentElement.id);
+      deleteTask(event.target.parentElement.id);
+      updateDisplay();
     });
   });
 }
