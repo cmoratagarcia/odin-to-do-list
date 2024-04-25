@@ -2,9 +2,9 @@ import "./style.css";
 import { renderTask, createTaskCard } from "./components/tasks.js";
 import {
   retrieveFromStorage,
-  deleteTask,
+  removeFromLibrary,
   taskArray,
-} from "./components/taskLibrary.js";
+} from "./components/libraries.js";
 import "./components/categories.js";
 
 const form = document.querySelector(".form");
@@ -29,7 +29,7 @@ submitBtn.addEventListener("click", () => {
 });
 
 function updateDisplay() {
-  retrieveFromStorage();
+  retrieveFromStorage("taskList", taskArray);
   // Render tasks from localStorage
   refreshTaskList(taskArray);
 }
@@ -44,7 +44,7 @@ function refreshTaskList(array) {
   const deleteBtns = document.querySelectorAll(".delete-button");
   deleteBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
-      deleteTask(event.target.parentElement.id);
+      removeFromLibrary(taskArray, event.target.parentElement.id);
       updateDisplay();
     });
   });

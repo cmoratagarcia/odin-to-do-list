@@ -1,4 +1,11 @@
-import { Task, addTask } from "./taskLibrary.js";
+import { addToLibrary, taskArray } from "./libraries.js";
+function Task(title, description, due, category, priority) {
+  this.title = title;
+  this.description = description;
+  this.due = due;
+  this.category = category;
+  this.priority = priority;
+}
 
 function renderTask() {
   const title = document.querySelector("#title").value;
@@ -8,7 +15,7 @@ function renderTask() {
   const priority = document.querySelector("#priority").value;
 
   const newTask = new Task(title, description, dueDate, category, priority);
-  addTask(newTask);
+  addToLibrary(taskArray, newTask);
   const taskCard = createTaskCard(newTask);
   return taskCard;
 }
