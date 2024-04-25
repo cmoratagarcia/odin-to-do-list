@@ -1,4 +1,6 @@
-import { addToLibrary, taskArray } from "./libraries.js";
+import { addToLibrary, removeFromLibrary, taskArray } from "./libraries.js";
+import { updateDisplay } from "../index.js";
+
 function Task(title, description, due, category, priority) {
   this.title = title;
   this.description = description;
@@ -47,5 +49,21 @@ function createTaskCard(taskData, index) {
 
   return taskCard;
 }
+function refreshTaskList(array) {
+  const taskContainer = document.querySelector(".task-container");
+  taskContainer.innerHTML = "";
+  array.forEach((task, index) => {
+    const taskCard = createTaskCard(task, index);
+    taskContainer.appendChild(taskCard);
+  });
 
-export { renderTask, createTaskCard };
+  const deleteBtns = document.querySelectorAll(".delete-button");
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      removeFromLibrary(taskArray, event.target.parentElement.id);
+      updateDisplay();
+    });
+  });
+}
+
+export { renderTask, createTaskCard, refreshTaskList };
