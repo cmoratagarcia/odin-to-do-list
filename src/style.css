@@ -81,3 +81,11 @@ ul {
  .low {
     border-left: 10px solid #57c54d;
   }
+
+
+  .delete-button {
+    margin-left: auto;
+    cursor: pointer;
+    text-align: right;
+    width: 30px;
+    }

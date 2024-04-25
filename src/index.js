@@ -1,6 +1,10 @@
 import "./style.css";
 import { renderTask, createTaskCard } from "./components/renderTask.js";
-import { retrieveFromStorage, taskArray } from "./components/taskLibrary.js";
+import {
+  retrieveFromStorage,
+  deleteTask,
+  taskArray,
+} from "./components/taskLibrary.js";
 
 const form = document.querySelector(".form");
 const newTask = document.querySelector(".new-task-btn");
@@ -19,17 +23,33 @@ closeDialog.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", () => {
-  const taskCard = renderTask(); //Potentially add newTask here
-  taskContainer.appendChild(taskCard);
+  renderTask();
+  updateDisplay();
 });
+//   const deleteBtn = document.querySelector(".delete-button");
+//   deleteBtn.addEventListener("click", () => {
+//     console.log(deleteBtn.parentElement);
+//   });
+// });
 
 // Load tasks from localStorage when the page loads
-window.addEventListener("DOMContentLoaded", () => {
+function updateDisplay() {
   retrieveFromStorage();
   // Render tasks from localStorage
   taskContainer.innerHTML = "";
-  for (const task of taskArray) {
-    const taskCard = createTaskCard(task);
+  taskArray.forEach((task, index) => {
+    const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
-  }
+  });
+
+  const deleteBtns = document.querySelectorAll(".delete-button");
+  deleteBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      console.log(event.target.parentElement.id);
+    });
+  });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateDisplay();
 });
