@@ -36,8 +36,12 @@ submitBtn.addEventListener("click", () => {
 function updateDisplay() {
   retrieveFromStorage();
   // Render tasks from localStorage
+  refreshTaskList(taskArray);
+}
+
+function refreshTaskList(array) {
   taskContainer.innerHTML = "";
-  taskArray.forEach((task, index) => {
+  array.forEach((task, index) => {
     const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
   });
