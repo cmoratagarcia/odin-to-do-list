@@ -1,10 +1,11 @@
 import "./style.css";
-import { renderTask, createTaskCard } from "./components/renderTask.js";
+import { renderTask, createTaskCard } from "./components/tasks.js";
 import {
   retrieveFromStorage,
   deleteTask,
   taskArray,
 } from "./components/taskLibrary.js";
+import "./components/categories.js";
 
 const form = document.querySelector(".form");
 const newTask = document.querySelector(".new-task-btn");
@@ -26,13 +27,7 @@ submitBtn.addEventListener("click", () => {
   renderTask();
   updateDisplay();
 });
-//   const deleteBtn = document.querySelector(".delete-button");
-//   deleteBtn.addEventListener("click", () => {
-//     console.log(deleteBtn.parentElement);
-//   });
-// });
 
-// Load tasks from localStorage when the page loads
 function updateDisplay() {
   retrieveFromStorage();
   // Render tasks from localStorage
@@ -55,6 +50,7 @@ function refreshTaskList(array) {
   });
 }
 
+// Load tasks from localStorage when the page loads
 window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
 });
