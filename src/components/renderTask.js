@@ -13,7 +13,7 @@ function renderTask() {
   return taskCard;
 }
 
-function createTaskCard(taskData) {
+function createTaskCard(taskData, index) {
   const taskCard = document.createElement("li");
   taskCard.classList.add("task-card");
   taskCard.classList.add(taskData.priority);
@@ -22,8 +22,9 @@ function createTaskCard(taskData) {
   taskTitle.innerText = taskData.title;
 
   const deleteIcon = document.createElement("div");
-  deleteIcon.classList.add("delete-icon");
+  deleteIcon.classList.add("delete-button");
   deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+  deleteIcon.setAttribute("id", index);
 
   const taskDescription = document.createElement("p");
   taskDescription.innerText = taskData.description;
