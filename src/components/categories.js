@@ -3,6 +3,7 @@ import { deleteItem } from "../index.js";
 
 const categoryBox = document.querySelector("#new-category");
 const categoriesContainer = document.querySelector(".categories");
+const categoryMenu = document.getElementById("category");
 
 function createCategory() {
   const newCategory = categoryBox.value;
@@ -26,12 +27,20 @@ function createCategoryItem(category, index) {
 
   return categoryOption;
 }
+function createDropDownOption(category) {
+  const dropDownCategory = document.createElement("option");
+  dropDownCategory.value = category.toLowerCase();
+  dropDownCategory.innerHTML = category;
 
+  return dropDownCategory;
+}
 function refreshCategoryList() {
   categoriesContainer.innerHTML = `<li>General</li>`;
   categoryArray.forEach((category, index) => {
     const categoryItem = createCategoryItem(category, index);
     categoriesContainer.appendChild(categoryItem);
+    const dropDownCategory = createDropDownOption(category);
+    categoryMenu.appendChild(dropDownCategory);
   });
 
   categoriesContainer.addEventListener("click", (event) =>
