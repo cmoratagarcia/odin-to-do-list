@@ -9,7 +9,7 @@ function Task(title, description, due, category, priority) {
   this.priority = priority;
 }
 
-function renderTask() {
+function createTask() {
   const title = document.querySelector("#title").value;
   const description = document.querySelector("#description").value;
   const dueDate = document.querySelector("#due-date").value;
@@ -18,8 +18,6 @@ function renderTask() {
 
   const newTask = new Task(title, description, dueDate, category, priority);
   addToLibrary(taskArray, newTask);
-  const taskCard = createTaskCard(newTask);
-  return taskCard;
 }
 
 function createTaskCard(taskData, index) {
@@ -49,10 +47,10 @@ function createTaskCard(taskData, index) {
 
   return taskCard;
 }
-function refreshTaskList(array) {
+function refreshTaskList() {
   const taskContainer = document.querySelector(".task-container");
   taskContainer.innerHTML = "";
-  array.forEach((task, index) => {
+  taskArray.forEach((task, index) => {
     const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
   });
@@ -66,4 +64,4 @@ function refreshTaskList(array) {
   });
 }
 
-export { renderTask, createTaskCard, refreshTaskList };
+export { createTask, createTaskCard, refreshTaskList };
