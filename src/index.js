@@ -1,7 +1,11 @@
 import "./style.css";
-import { renderTask, refreshTaskList } from "./components/tasks.js";
-import { retrieveFromStorage, taskArray } from "./components/libraries.js";
-import "./components/categories.js";
+import { createTask, refreshTaskList } from "./components/tasks.js";
+import {
+  retrieveFromStorage,
+  taskArray,
+  categoryArray,
+} from "./components/libraries.js";
+import { refreshCategoryList } from "./components/categories.js";
 
 const form = document.querySelector(".form");
 const newTask = document.querySelector(".new-task-btn");
@@ -19,14 +23,16 @@ closeDialog.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", () => {
-  renderTask();
+  createTask();
   updateDisplay();
 });
 
 function updateDisplay() {
   retrieveFromStorage("taskList", taskArray);
+  retrieveFromStorage("categoryList", categoryArray);
   // Render tasks from localStorage
-  refreshTaskList(taskArray);
+  refreshTaskList();
+  refreshCategoryList();
 }
 
 // Load tasks from localStorage when the page loads
