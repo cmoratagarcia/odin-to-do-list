@@ -94,7 +94,7 @@
     border-left: 10px solid #57c54d;
     }
 
-    .delete-button {
+    .task-card .delete-button {
     margin-left: auto;
     cursor: pointer;
     text-align: right;

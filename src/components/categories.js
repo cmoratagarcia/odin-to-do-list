@@ -1,8 +1,8 @@
 import { addToLibrary, removeFromLibrary, categoryArray } from "./libraries";
-import { updateDisplay } from "../index.js";
+import { deleteItem } from "../index.js";
 
 const categoryBox = document.querySelector("#new-category");
-const categories = document.querySelector(".categories");
+const categoriesContainer = document.querySelector(".categories");
 
 function createCategory() {
   const newCategory = categoryBox.value;
@@ -20,6 +20,7 @@ categoryBox.addEventListener("keydown", function (event) {
 
 function createCategoryItem(category, index) {
   const categoryOption = document.createElement("li");
+  categoryOption.classList.add("delete-button");
   categoryOption.innerHTML = `${category} <i class="fa-solid fa-trash-can"></i>`;
   categoryOption.setAttribute("id", index);
 
@@ -27,18 +28,14 @@ function createCategoryItem(category, index) {
 }
 
 function refreshCategoryList() {
-  categories.innerHTML = `<li>General</li>`;
+  categoriesContainer.innerHTML = `<li>General</li>`;
   categoryArray.forEach((category, index) => {
     const categoryItem = createCategoryItem(category, index);
-    categories.appendChild(categoryItem);
+    categoriesContainer.appendChild(categoryItem);
   });
 
-  const deleteIcons = document.querySelectorAll(".fa-trash-can");
-  deleteIcons.forEach((icon) => {
-    icon.addEventListener("click", (event) => {
-      removeFromLibrary(categoryArray, event.target.parentElement.id);
-      updateDisplay();
-    });
-  });
+  categoriesContainer.addEventListener("click", (event) =>
+    deleteItem(event, categoryArray)
+  );
 }
 export { refreshCategoryList };
