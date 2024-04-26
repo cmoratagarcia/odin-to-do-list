@@ -47,10 +47,10 @@ function createTaskCard(taskData, index) {
 
   return taskCard;
 }
-function refreshTaskList() {
+function refreshTaskList(array) {
   const taskContainer = document.querySelector(".task-container");
   taskContainer.innerHTML = "";
-  taskArray.forEach((task, index) => {
+  array.forEach((task, index) => {
     const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
   });

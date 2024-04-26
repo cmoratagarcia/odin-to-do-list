@@ -34,9 +34,9 @@ function createDropDownOption(category) {
 
   return dropDownCategory;
 }
-function refreshCategoryList() {
+function refreshCategoryList(array) {
   categoriesContainer.innerHTML = `<li>General</li>`;
-  categoryArray.forEach((category, index) => {
+  array.forEach((category, index) => {
     const categoryItem = createCategoryItem(category, index);
     categoriesContainer.appendChild(categoryItem);
     const dropDownCategory = createDropDownOption(category);

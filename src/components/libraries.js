@@ -20,6 +20,8 @@ function retrieveFromStorage(listname, array) {
   if (tasksJSON) {
     array = JSON.parse(tasksJSON);
   }
+
+  return array;
 }
 
 export {

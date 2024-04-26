@@ -29,11 +29,9 @@ submitBtn.addEventListener("click", () => {
 });
 
 function updateDisplay() {
-  retrieveFromStorage("taskList", taskArray);
-  retrieveFromStorage("categoryList", categoryArray);
   // Render tasks from localStorage
-  refreshTaskList();
-  refreshCategoryList();
+  refreshTaskList(retrieveFromStorage("taskList", taskArray));
+  refreshCategoryList(retrieveFromStorage("categoryList", categoryArray));
 }
 
 function deleteItem(event, array) {
