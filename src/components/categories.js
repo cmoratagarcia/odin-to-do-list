@@ -1,5 +1,5 @@
 import { addToLibrary, removeFromLibrary, categoryArray } from "./libraries";
-import { deleteItem } from "../index.js";
+import { deleteItem, update, updateDisplay } from "../index.js";
 
 const categoryBox = document.querySelector("#new-category");
 const categoriesContainer = document.querySelector(".categories");
@@ -14,7 +14,7 @@ function createCategory() {
 categoryBox.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     createCategory();
-    refreshCategoryList();
+    updateDisplay();
     categoryBox.value = "";
   }
 });
@@ -22,7 +22,8 @@ categoryBox.addEventListener("keydown", function (event) {
 function createCategoryItem(category, index) {
   const categoryOption = document.createElement("li");
   categoryOption.classList.add("delete-button");
-  categoryOption.innerHTML = `${category} <i class="fa-solid fa-trash-can"></i>`;
+  const categoryText = category.charAt(0).toUpperCase() + category.slice(1);
+  categoryOption.innerHTML = `${categoryText} <i class="fa-solid fa-trash-can"></i>`;
   categoryOption.setAttribute("id", index);
 
   return categoryOption;
@@ -30,12 +31,14 @@ function createCategoryItem(category, index) {
 function createDropDownOption(category) {
   const dropDownCategory = document.createElement("option");
   dropDownCategory.value = category.toLowerCase();
-  dropDownCategory.innerHTML = category;
+  dropDownCategory.innerHTML =
+    category.charAt(0).toUpperCase() + category.slice(1);
 
   return dropDownCategory;
 }
 function refreshCategoryList(array) {
   categoriesContainer.innerHTML = `<li>General</li>`;
+  categoryMenu.innerHTML = `<option value="general">General</option>`;
   array.forEach((category, index) => {
     const categoryItem = createCategoryItem(category, index);
     categoriesContainer.appendChild(categoryItem);
