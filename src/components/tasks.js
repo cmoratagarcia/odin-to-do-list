@@ -1,5 +1,5 @@
-import { addToLibrary, removeFromLibrary, taskArray } from "./libraries.js";
-import { updateDisplay } from "../index.js";
+import { addToLibrary, taskArray } from "./libraries.js";
+import { deleteItem } from "../index.js";
 
 function Task(title, description, due, category, priority) {
   this.title = title;
@@ -55,13 +55,9 @@ function refreshTaskList() {
     taskContainer.appendChild(taskCard);
   });
 
-  const deleteBtns = document.querySelectorAll(".delete-button");
-  deleteBtns.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      removeFromLibrary(taskArray, event.target.parentElement.id);
-      updateDisplay();
-    });
-  });
+  taskContainer.addEventListener("click", (event) =>
+    deleteItem(event, taskArray)
+  );
 }
 
 export { createTask, createTaskCard, refreshTaskList };
