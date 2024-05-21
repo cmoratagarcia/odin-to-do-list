@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    
     :root {
     --off-white: #f1eeea; 
     --beige: #dfd3c3; 
@@ -9,6 +11,7 @@
     box-sizing: border-box;
     margin: 0;
     display: grid;
+    font-family: "Noto Sans", sans-serif;
     }
 
     header {
