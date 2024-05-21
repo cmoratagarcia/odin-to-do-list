@@ -1,5 +1,6 @@
 import { addToLibrary, taskArray } from "./libraries.js";
 import { deleteItem } from "../index.js";
+import { format, parseISO } from "date-fns";
 
 function Task(title, description, due, category, priority) {
   this.title = title;
@@ -37,7 +38,8 @@ function createTaskCard(taskData, index) {
   taskDescription.innerText = taskData.description;
 
   const taskDate = document.createElement("p");
-  taskDate.innerText = `Due: ${taskData.due}`;
+  const formattedDate = format(parseISO(taskData.due), "MMM-dd-yyyy");
+  taskDate.innerText = `Due: ${formattedDate}`;
   taskDate.setAttribute("style", "color: gray; font-style:italic;");
 
   taskCard.appendChild(taskTitle);
