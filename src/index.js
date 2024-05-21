@@ -35,9 +35,9 @@ function updateDisplay() {
 }
 
 function deleteItem(event, array) {
-  if (event.target.parentElement.classList.contains("delete-button")) {
-    const taskId = event.target.parentElement.id;
-    removeFromLibrary(array, taskId);
+  if (event.target.classList.contains("delete-button")) {
+    const itemIndex = parseInt(event.target.parentElement.id);
+    removeFromLibrary(array, itemIndex);
     updateDisplay();
   }
 }
@@ -47,4 +47,4 @@ window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
 });
 
-export { deleteItem };
+export { deleteItem, updateDisplay };

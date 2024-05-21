@@ -29,9 +29,9 @@ function createTaskCard(taskData, index) {
   taskTitle.innerText = taskData.title;
 
   const deleteIcon = document.createElement("div");
-  deleteIcon.classList.add("delete-button");
-  deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+  deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can delete-button"></i>`;
   deleteIcon.setAttribute("id", index);
+  deleteIcon.addEventListener("click", (event) => deleteItem(event, taskArray));
 
   const taskDescription = document.createElement("p");
   taskDescription.innerText = taskData.description;
@@ -54,10 +54,6 @@ function refreshTaskList(array) {
     const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
   });
-
-  taskContainer.addEventListener("click", (event) =>
-    deleteItem(event, taskArray)
-  );
 }
 
 export { createTask, createTaskCard, refreshTaskList };

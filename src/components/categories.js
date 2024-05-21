@@ -21,10 +21,12 @@ categoryBox.addEventListener("keydown", function (event) {
 
 function createCategoryItem(category, index) {
   const categoryOption = document.createElement("li");
-  categoryOption.classList.add("delete-button");
   const categoryText = category.charAt(0).toUpperCase() + category.slice(1);
-  categoryOption.innerHTML = `${categoryText} <i class="fa-solid fa-trash-can"></i>`;
+  categoryOption.innerHTML = `${categoryText} <i class="fa-solid fa-trash-can delete-button"></i>`;
   categoryOption.setAttribute("id", index);
+  categoryOption.addEventListener("click", (event) =>
+    deleteItem(event, categoryArray)
+  );
 
   return categoryOption;
 }
@@ -45,9 +47,5 @@ function refreshCategoryList(array) {
     const dropDownCategory = createDropDownOption(category);
     categoryMenu.appendChild(dropDownCategory);
   });
-
-  categoriesContainer.addEventListener("click", (event) =>
-    deleteItem(event, categoryArray)
-  );
 }
 export { refreshCategoryList };
