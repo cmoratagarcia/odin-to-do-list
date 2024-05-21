@@ -38,7 +38,10 @@ function createTaskCard(taskData, index) {
   taskDescription.innerText = taskData.description;
 
   const taskDate = document.createElement("p");
-  const formattedDate = format(parseISO(taskData.due), "MMM-dd-yyyy");
+  let formattedDate = "";
+  if (taskData.due != "") {
+    formattedDate = format(parseISO(taskData.due), "MMM-dd-yyyy");
+  }
   taskDate.innerText = `Due: ${formattedDate}`;
   taskDate.setAttribute("style", "color: gray; font-style:italic;");
 
