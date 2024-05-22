@@ -1,13 +1,14 @@
 import { addToLibrary, removeFromLibrary, categoryArray } from "./libraries";
-import { deleteItem, update, updateDisplay } from "../index.js";
+import { deleteItem, updateDisplay, filterTask } from "../index.js";
 
 const categoryBox = document.querySelector("#new-category");
 const categoriesContainer = document.querySelector(".categories");
 const categoryMenu = document.getElementById("category");
 
 function createCategory() {
-  const newCategory = categoryBox.value;
-
+  const categoryValue = categoryBox.value;
+  const newCategory =
+    categoryValue.charAt(0).toUpperCase() + categoryValue.slice(1);
   addToLibrary(categoryArray, newCategory);
 }
 
@@ -21,12 +22,12 @@ categoryBox.addEventListener("keydown", function (event) {
 
 function createCategoryItem(category, index) {
   const categoryOption = document.createElement("li");
-  const categoryText = category.charAt(0).toUpperCase() + category.slice(1);
-  categoryOption.innerHTML = `${categoryText} <i class="fa-solid fa-trash-can delete-button"></i>`;
+  categoryOption.innerHTML = `${category} <i class="fa-solid fa-trash-can delete-button"></i>`;
   categoryOption.setAttribute("id", index);
-  categoryOption.addEventListener("click", (event) =>
-    deleteItem(event, categoryArray)
-  );
+  categoryOption.addEventListener("click", (event) => {
+    deleteItem(event, categoryArray);
+    filterTask(event);
+  });
 
   return categoryOption;
 }
