@@ -22,22 +22,22 @@ categoryBox.addEventListener("keydown", function (event) {
 
 function createCategoryItem(category, index) {
   const categoryListItem = document.createElement("li");
-  categoryListItem.setAttribute("id", index);
 
   const categoryOption = document.createElement("div");
   categoryOption.innerText = category;
+
   const deleteIcon = document.createElement("div");
   deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can delete-button"></i>`;
+  deleteIcon.setAttribute("id", index);
+  deleteIcon.addEventListener("click", (event) =>
+    deleteItem(event, categoryArray)
+  );
+
   categoryListItem.appendChild(categoryOption);
   categoryListItem.appendChild(deleteIcon);
-
   categoryListItem.addEventListener("click", (event) => {
     //Might need to be option to avoid filtering when deleting
     filterTask(event);
-  });
-  
-  deleteIcon.addEventListener("click", (event) => {
-    deleteItem(event, categoryArray);
   });
 
   return categoryListItem;
