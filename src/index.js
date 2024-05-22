@@ -35,11 +35,16 @@ function updateDisplay() {
 }
 
 function deleteItem(event, array) {
-  if (event.target.classList.contains("delete-button")) {
-    const itemIndex = parseInt(event.target.parentElement.id);
-    removeFromLibrary(array, itemIndex);
-    updateDisplay();
-  }
+  const itemIndex = parseInt(event.target.parentNode.id);
+  removeFromLibrary(array, itemIndex);
+  updateDisplay();
+}
+
+function filterTask(event) {
+  const filteredArray = taskArray.filter(
+    (item) => item.category == event.target.innerText
+  );
+  refreshTaskList(filteredArray);
 }
 
 // Load tasks from localStorage when the page loads
@@ -47,4 +52,4 @@ window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
 });
 
-export { deleteItem, updateDisplay };
+export { deleteItem, updateDisplay, filterTask };
