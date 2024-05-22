@@ -13,6 +13,7 @@ const newTask = document.querySelector(".new-task-btn");
 const dialog = document.querySelector("dialog");
 const closeDialog = document.querySelector(".close-dialog");
 const submitBtn = document.querySelector(".submit");
+const catTitle = document.querySelector(".category-title");
 
 newTask.addEventListener("click", () => {
   form.reset();
@@ -45,6 +46,7 @@ function filterTask(event) {
     (item) => item.category == event.target.innerText
   );
   refreshTaskList(filteredArray);
+  catTitle.innerText = event.target.innerText;
 }
 
 // Load tasks from localStorage when the page loads
