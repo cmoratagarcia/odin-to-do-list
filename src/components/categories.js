@@ -33,9 +33,8 @@ function createCategoryItem(category, index) {
 }
 function createDropDownOption(category) {
   const dropDownCategory = document.createElement("option");
-  dropDownCategory.value = category.toLowerCase();
-  dropDownCategory.innerHTML =
-    category.charAt(0).toUpperCase() + category.slice(1);
+  dropDownCategory.value = category;
+  dropDownCategory.innerHTML = category;
 
   return dropDownCategory;
 }
