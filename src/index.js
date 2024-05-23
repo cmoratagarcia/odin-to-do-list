@@ -15,6 +15,12 @@ const closeDialog = document.querySelector(".close-dialog");
 const submitBtn = document.querySelector(".submit");
 const catTitle = document.querySelector(".category-title");
 
+//Clear filtered categories
+function clearCatFilter() {
+  updateDisplay();
+  catTitle.innerText = "All Tasks";
+}
+
 newTask.addEventListener("click", () => {
   form.reset();
   dialog.showModal();
@@ -33,6 +39,9 @@ function updateDisplay() {
   // Render tasks from localStorage
   refreshTaskList(retrieveFromStorage("taskList", taskArray));
   refreshCategoryList(retrieveFromStorage("categoryList", categoryArray));
+  // Re-set general event listener after updating the display
+  const generalCat = document.querySelector(".general-cat");
+  generalCat.addEventListener("click", clearCatFilter);
 }
 
 function deleteItem(event, array) {
