@@ -1,14 +1,14 @@
 let taskArray = [];
-let categoryArray = [];
+let catArray = [];
 
 function addToLibrary(array, task) {
   array.push(task);
-  saveToStorage(array == taskArray ? "taskList" : "categoryList", array);
+  saveToStorage(array == taskArray ? "taskList" : "catList", array);
 }
 
 function removeFromLibrary(array, index) {
   array.splice(index, 1);
-  saveToStorage(array == taskArray ? "taskList" : "categoryList", array);
+  saveToStorage(array == taskArray ? "taskList" : "catList", array);
 }
 
 function saveToStorage(listname, array) {
@@ -29,5 +29,5 @@ export {
   removeFromLibrary,
   retrieveFromStorage,
   taskArray,
-  categoryArray,
+  catArray,
 };

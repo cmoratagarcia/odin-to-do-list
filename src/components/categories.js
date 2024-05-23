@@ -1,62 +1,59 @@
-import { addToLibrary, removeFromLibrary, categoryArray } from "./libraries";
+import { addToLibrary, catArray } from "./libraries";
 import { deleteItem, updateDisplay, filterTask } from "../index.js";
 
-const categoryBox = document.querySelector("#new-category");
-const categoriesContainer = document.querySelector(".categories");
-const categoryMenu = document.getElementById("category");
+const catBox = document.querySelector("#new-cat");
+const catSidebar = document.querySelector(".cat-sidebar");
+const catDropdown = document.getElementById("category");
 
 function createCategory() {
-  const categoryValue = categoryBox.value;
-  const newCategory =
-    categoryValue.charAt(0).toUpperCase() + categoryValue.slice(1);
-  addToLibrary(categoryArray, newCategory);
+  const catValue = catBox.value;
+  const newCategory = catValue.charAt(0).toUpperCase() + catValue.slice(1);
+  addToLibrary(catArray, newCategory);
 }
 
-categoryBox.addEventListener("keydown", function (event) {
+catBox.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     createCategory();
     updateDisplay();
-    categoryBox.value = "";
+    catBox.value = "";
   }
 });
 
-function createCategoryItem(category, index) {
-  const categoryListItem = document.createElement("li");
+function createCatItem(category, index) {
+  const catListItem = document.createElement("li");
 
-  const categoryOption = document.createElement("div");
-  categoryOption.innerText = category;
+  const catOption = document.createElement("div");
+  catOption.classList.add("custom-cat");
+  catOption.innerText = category;
+  catOption.addEventListener("click", (event) => {
+    filterTask(event);
+  });
 
   const deleteIcon = document.createElement("div");
   deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can delete-button"></i>`;
   deleteIcon.setAttribute("id", index);
-  deleteIcon.addEventListener("click", (event) =>
-    deleteItem(event, categoryArray)
-  );
+  deleteIcon.addEventListener("click", (event) => deleteItem(event, catArray));
 
-  categoryListItem.appendChild(categoryOption);
-  categoryListItem.appendChild(deleteIcon);
-  categoryListItem.addEventListener("click", (event) => {
-    //Might need to be option to avoid filtering when deleting
-    filterTask(event);
-  });
+  catListItem.appendChild(catOption);
+  catListItem.appendChild(deleteIcon);
 
-  return categoryListItem;
+  return catListItem;
 }
 function createDropDownOption(category) {
-  const dropDownCategory = document.createElement("option");
-  dropDownCategory.value = category;
-  dropDownCategory.innerHTML = category;
+  const dropDownCat = document.createElement("option");
+  dropDownCat.value = category;
+  dropDownCat.innerHTML = category;
 
-  return dropDownCategory;
+  return dropDownCat;
 }
-function refreshCategoryList(array) {
-  categoriesContainer.innerHTML = `<li>General</li>`;
-  categoryMenu.innerHTML = `<option value="general">General</option>`;
+function refreshCatList(array) {
+  catSidebar.innerHTML = `<li class="general-cat">General</li>`;
+  catDropdown.innerHTML = `<option value="general">General</option>`;
   array.forEach((category, index) => {
-    const categoryItem = createCategoryItem(category, index);
-    categoriesContainer.appendChild(categoryItem);
-    const dropDownCategory = createDropDownOption(category);
-    categoryMenu.appendChild(dropDownCategory);
+    const catItem = createCatItem(category, index);
+    catSidebar.appendChild(catItem);
+    const dropDownCat = createDropDownOption(category);
+    catDropdown.appendChild(dropDownCat);
   });
 }
-export { refreshCategoryList };
+export { refreshCatList };

@@ -4,16 +4,16 @@ import {
   retrieveFromStorage,
   removeFromLibrary,
   taskArray,
-  categoryArray,
+  catArray,
 } from "./components/libraries.js";
-import { refreshCategoryList } from "./components/categories.js";
+import { refreshCatList } from "./components/categories.js";
 
 const form = document.querySelector(".form");
 const newTask = document.querySelector(".new-task-btn");
 const dialog = document.querySelector("dialog");
 const closeDialog = document.querySelector(".close-dialog");
 const submitBtn = document.querySelector(".submit");
-const catTitle = document.querySelector(".category-title");
+const catTitle = document.querySelector(".cat-title");
 
 //Clear filtered categories
 function clearCatFilter() {
@@ -38,7 +38,7 @@ submitBtn.addEventListener("click", () => {
 function updateDisplay() {
   // Render tasks from localStorage
   refreshTaskList(retrieveFromStorage("taskList", taskArray));
-  refreshCategoryList(retrieveFromStorage("categoryList", categoryArray));
+  refreshCatList(retrieveFromStorage("catList", catArray));
   // Re-set general event listener after updating the display
   const generalCat = document.querySelector(".general-cat");
   generalCat.addEventListener("click", clearCatFilter);
