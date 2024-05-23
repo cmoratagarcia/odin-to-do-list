@@ -34,7 +34,7 @@
 
     main {
     margin-left: 50px;
-    width: 70%;
+    width: 80%;
     }
     .cat-container {
     margin-top: 50px;
@@ -60,17 +60,19 @@
     background-color: var(--off-white);
     }
 
-    #new-cat {
+    #new-cat, .sidebar-options li  {
         width: 80%;
+        height: 25px;
     }
-
+    #new-cat {
+        padding: 5px;
+    }
     .task-container {
         margin-top: 20px;
     }
 
     .task-card {
     background-color: var(--off-white);
-    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -88,6 +90,19 @@
     margin-bottom: 10px;
     }
 
+    .delete-container {
+    cursor: pointer;
+    text-align: right;
+    }
+
+    .delete-button {
+        margin: 0;
+        
+    }
+  .task-date {
+      text-align: right;
+    }
+
     .high {
     border-left: 10px solid #ff4d4d;
     }
@@ -100,10 +115,7 @@
     border-left: 10px solid #57c54d;
     }
 
-    .task-card .delete-button {
-    cursor: pointer;
-    margin-right: 5px;
-    }
+   
 
     dialog {
     background-color: var(--brown-gray);

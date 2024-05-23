@@ -32,6 +32,7 @@ function createCatItem(category, index) {
   const deleteIcon = document.createElement("div");
   deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can delete-button"></i>`;
   deleteIcon.setAttribute("id", index);
+  deleteIcon.classList.add("delete-container");
   deleteIcon.addEventListener("click", (event) => deleteItem(event, catArray));
 
   catListItem.appendChild(catOption);

@@ -32,12 +32,14 @@ function createTaskCard(taskData, index) {
   const deleteIcon = document.createElement("div");
   deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can delete-button"></i>`;
   deleteIcon.setAttribute("id", index);
+  deleteIcon.classList.add("delete-container");
   deleteIcon.addEventListener("click", (event) => deleteItem(event, taskArray));
 
   const taskDescription = document.createElement("p");
   taskDescription.innerText = taskData.description;
 
   const taskDate = document.createElement("p");
+  taskDate.classList.add("task-date");
   let formattedDate = "";
   if (taskData.due != "") {
     formattedDate = format(parseISO(taskData.due), "MMM-dd-yyyy");
