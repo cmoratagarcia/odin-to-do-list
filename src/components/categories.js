@@ -47,7 +47,7 @@ function createDropDownOption(category) {
   return dropDownCat;
 }
 function refreshCatList(array) {
-  catSidebar.innerHTML = `<li class="general-cat">General</li>`;
+  catSidebar.innerHTML = `<li class="general-cat">All Tasks</li>`;
   catDropdown.innerHTML = `<option value="general">General</option>`;
   array.forEach((category, index) => {
     const catItem = createCatItem(category, index);
