@@ -21,6 +21,7 @@
     font-size: 40px;
     text-align: center;
     }
+
     .content {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -41,9 +42,8 @@
     }
 
     .new-task-btn {
-        margin: 10px;
-        background-color: var(--off-white);
-        width: 70%;
+    background-color: var(--off-white);
+    width: 70%;
     }
 
     .cat-container {
@@ -71,17 +71,22 @@
     }
 
     #new-cat, .sidebar-options li  {
-        height: 25px;
+    height: 25px;
+    width: 90%;
     }
+
     #new-cat {
-        padding: 5px;
+    padding: 5px;
     }
+
     .task-container {
-        margin-top: 20px;
+    margin-top: 20px;
     }
+
     .selected-cat {
-        background-color: var(--off-white);
+    background-color: var(--off-white);
     }
+
     .task-card {
     background-color: var(--off-white);
     border-radius: 8px;
@@ -107,11 +112,11 @@
     }
 
     .delete-button {
-        margin: 0;
-        
+    margin: 0;
     }
-  .task-date {
-      text-align: right;
+
+    .task-date {
+    text-align: right;
     }
 
     .high {
@@ -125,8 +130,6 @@
     .low {
     border-left: 10px solid #57c54d;
     }
-
-   
 
     dialog {
     background-color: var(--brown-gray);
@@ -156,11 +159,12 @@
     }
 
     .form ul {
-        width: 80%;
-        margin: 0;
+    width: 80%;
+    margin: 0;
     }
+
     #due-date {
-        margin-top: 5px;
+    margin-top: 5px;
     }
    
     .text-input, select {
@@ -174,9 +178,9 @@
     }
     
     select {
-        max-width: 65%;
-        margin-left: 5px;
-        }
+    max-width: 65%;
+    margin-left: 5px;
+    }
 
     button {
     padding: 10px 20px;
