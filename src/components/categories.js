@@ -27,6 +27,7 @@ function createCatItem(category, index) {
   catOption.innerText = category;
   catOption.addEventListener("click", (event) => {
     filterTask(event);
+    highlightSelectedCat(event);
   });
 
   const deleteIcon = document.createElement("div");
@@ -57,4 +58,15 @@ function refreshCatList(array) {
     catDropdown.appendChild(dropDownCat);
   });
 }
-export { refreshCatList };
+
+function highlightSelectedCat(event) {
+  const sidebarLis = document.querySelectorAll(".custom-cat");
+  //Remove class from all lis
+  for (let li of sidebarLis) {
+    li.classList.remove("selected-cat");
+  }
+
+  //Add class to selected li
+  event.target.parentNode.classList.add("selected-cat");
+}
+export { refreshCatList, highlightSelectedCat };
