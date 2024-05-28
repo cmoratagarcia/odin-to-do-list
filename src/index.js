@@ -20,23 +20,25 @@ const catTitle = document.querySelector(".cat-title");
 
 //Clear filtered categories
 function clearCatFilter() {
-  updateDisplay();
   catTitle.innerText = "All Tasks";
+  updateDisplay();
 }
 
 function updateDisplay() {
   // Render tasks from localStorage
   refreshTaskList(retrieveFromStorage("taskList", taskArray));
   refreshCatList(retrieveFromStorage("catList", catArray));
-  // Re-set general event listener after updating the display
-  const generalCat = document.querySelector(".general-cat");
-  generalCat.addEventListener("click", clearCatFilter);
 }
 
 function deleteItem(event, array) {
   const itemIndex = parseInt(event.target.parentNode.id);
   removeFromLibrary(array, itemIndex);
   updateDisplay();
+
+  // Reset the task filter if a category is deleted
+  if (array === catArray) {
+    clearCatFilter();
+  }
 }
 
 function filterTask(event) {
@@ -69,4 +71,4 @@ window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
 });
 
-export { deleteItem, updateDisplay, filterTask };
+export { deleteItem, updateDisplay, filterTask, clearCatFilter };
