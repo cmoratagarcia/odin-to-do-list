@@ -6,7 +6,7 @@ import {
   taskArray,
   catArray,
 } from "./components/libraries.js";
-import { refreshCatList } from "./components/categories.js";
+import { highlightSelectedCat, refreshCatList } from "./components/categories.js";
 
 const form = document.querySelector(".form");
 const newTask = document.querySelector(".new-task-btn");
@@ -55,6 +55,7 @@ function filterTask(event) {
     (item) => item.category == event.target.innerText
   );
   refreshTaskList(filteredArray);
+    highlightSelectedCat(event)
   catTitle.innerText = event.target.innerText;
 }
 
