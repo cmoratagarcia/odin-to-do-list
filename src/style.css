@@ -36,6 +36,10 @@
     margin-left: 50px;
     width: 80%;
     }
+
+    .new-task-btn {
+        background-color: var(--off-white);
+    }
     .cat-container {
     margin-top: 50px;
     }
