@@ -11,7 +11,7 @@ function createCategory() {
   addToLibrary(catArray, newCategory);
 }
 
-catBox.addEventListener("keydown", function (event) {
+catBox.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     createCategory();
     updateDisplay();
@@ -41,6 +41,7 @@ function createCatItem(category, index) {
 
   return catListItem;
 }
+
 function createDropDownOption(category) {
   const dropDownCat = document.createElement("option");
   dropDownCat.value = category;
@@ -48,6 +49,7 @@ function createDropDownOption(category) {
 
   return dropDownCat;
 }
+
 function refreshCatList(array) {
   catSidebar.innerHTML = `<li class="general-cat">All Tasks</li>`;
   catDropdown.innerHTML = `<option value="general">General</option>`;
@@ -62,9 +64,7 @@ function refreshCatList(array) {
 function highlightSelectedCat(event) {
   const sidebarLis = document.querySelectorAll(".custom-cat");
   //Remove class from all lis
-  for (let li of sidebarLis) {
-    li.classList.remove("selected-cat");
-  }
+  sidebarLis.forEach((li) => li.classList.remove("selected-cat"));
 
   //Add class to selected li
   event.target.parentNode.classList.add("selected-cat");

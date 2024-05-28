@@ -63,6 +63,7 @@ submitBtn.addEventListener("click", () => {
     updateDisplay();
   }
 });
+
 // Load tasks from localStorage when the page loads
 window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
