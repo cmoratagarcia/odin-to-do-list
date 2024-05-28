@@ -1,8 +1,8 @@
 let taskArray = [];
 let catArray = [];
 
-function addToLibrary(array, task) {
-  array.push(task);
+function addToLibrary(array, item) {
+  array.push(item);
   saveToStorage(array == taskArray ? "taskList" : "catList", array);
 }
 
@@ -11,14 +11,14 @@ function removeFromLibrary(array, index) {
   saveToStorage(array == taskArray ? "taskList" : "catList", array);
 }
 
-function saveToStorage(listname, array) {
-  localStorage.setItem(listname, JSON.stringify(array));
+function saveToStorage(listName, array) {
+  localStorage.setItem(listName, JSON.stringify(array));
 }
 
-function retrieveFromStorage(listname, array) {
-  const tasksJSON = localStorage.getItem(listname);
-  if (tasksJSON) {
-    array = JSON.parse(tasksJSON);
+function retrieveFromStorage(listName, array) {
+  const itemsJSON = localStorage.getItem(listName);
+  if (itemsJSON) {
+    array = JSON.parse(itemsJSON);
   }
 
   return array;
