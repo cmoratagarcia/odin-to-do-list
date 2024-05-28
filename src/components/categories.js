@@ -64,7 +64,9 @@ function refreshCatList(array) {
 function highlightSelectedCat(event) {
   const sidebarLis = document.querySelectorAll(".custom-cat");
   //Remove class from all lis
-  sidebarLis.forEach((li) => li.classList.remove("selected-cat"));
+  for (let li of sidebarLis) {
+    li.parentNode.classList.remove("selected-cat");
+  }
 
   //Add class to selected li
   event.target.parentNode.classList.add("selected-cat");
