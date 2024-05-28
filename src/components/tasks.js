@@ -61,6 +61,11 @@ function refreshTaskList(array) {
     const taskCard = createTaskCard(task, index);
     taskContainer.appendChild(taskCard);
   });
+  if (array.length === 0) {
+    const noTasksPara = document.createElement("p");
+    noTasksPara.innerText = "No tasks in this category";
+    taskContainer.appendChild(noTasksPara);
+  }
 }
 
 export { createTask, createTaskCard, refreshTaskList };
