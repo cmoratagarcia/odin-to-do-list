@@ -24,22 +24,6 @@ function clearCatFilter() {
   catTitle.innerText = "All Tasks";
 }
 
-newTask.addEventListener("click", () => {
-  form.reset();
-  dialog.showModal();
-});
-
-closeDialog.addEventListener("click", () => {
-  dialog.close();
-});
-
-submitBtn.addEventListener("click", () => {
-  if (form.checkValidity()) {
-    createTask();
-    updateDisplay();
-  }
-});
-
 function updateDisplay() {
   // Render tasks from localStorage
   refreshTaskList(retrieveFromStorage("taskList", taskArray));
@@ -64,6 +48,21 @@ function filterTask(event) {
   catTitle.innerText = event.target.innerText;
 }
 
+newTask.addEventListener("click", () => {
+  form.reset();
+  dialog.showModal();
+});
+
+closeDialog.addEventListener("click", () => {
+  dialog.close();
+});
+
+submitBtn.addEventListener("click", () => {
+  if (form.checkValidity()) {
+    createTask();
+    updateDisplay();
+  }
+});
 // Load tasks from localStorage when the page loads
 window.addEventListener("DOMContentLoaded", () => {
   updateDisplay();
