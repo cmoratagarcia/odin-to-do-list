@@ -1,5 +1,10 @@
 import { addToLibrary, catArray } from "./libraries";
-import { deleteItem, updateDisplay, filterTask } from "../index.js";
+import {
+  deleteItem,
+  updateDisplay,
+  filterTask,
+  clearCatFilter,
+} from "../index.js";
 
 const catBox = document.querySelector("#new-cat");
 const catSidebar = document.querySelector(".cat-sidebar");
@@ -59,6 +64,10 @@ function refreshCatList(array) {
     const dropDownCat = createDropDownOption(category);
     catDropdown.appendChild(dropDownCat);
   });
+
+  // Re-set general event listener after updating the display
+  const generalCat = document.querySelector(".general-cat");
+  generalCat.addEventListener("click", clearCatFilter);
 }
 
 function highlightSelectedCat(event) {
