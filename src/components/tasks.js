@@ -23,8 +23,7 @@ function createTask() {
 
 function createTaskCard(taskData, index) {
   const taskCard = document.createElement("li");
-  taskCard.classList.add("task-card");
-  taskCard.classList.add(taskData.priority);
+  taskCard.classList.add("task-card", taskData.priority);
 
   const taskTitle = document.createElement("h3");
   taskTitle.innerText = taskData.title;
@@ -40,20 +39,18 @@ function createTaskCard(taskData, index) {
 
   const taskDate = document.createElement("p");
   taskDate.classList.add("task-date");
-  let formattedDate = "";
-  if (taskData.due != "") {
-    formattedDate = format(parseISO(taskData.due), "MMM-dd-yyyy");
-  }
+  const formattedDate = taskData.due
+    ? format(parseISO(taskData.due), "MMM-dd-yyyy")
+    : "";
   taskDate.innerText = `Due: ${formattedDate}`;
-  taskDate.setAttribute("style", "color: gray; font-style:italic;");
+  taskDate.style.color = "gray";
+  taskDate.style.fontStyle = "italic";
 
-  taskCard.appendChild(taskTitle);
-  taskCard.appendChild(deleteIcon);
-  taskCard.appendChild(taskDescription);
-  taskCard.appendChild(taskDate);
+  taskCard.append(taskTitle, deleteIcon, taskDescription, taskDate);
 
   return taskCard;
 }
+
 function refreshTaskList(array) {
   const taskContainer = document.querySelector(".task-container");
   taskContainer.innerHTML = "";
